@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1F5FA900-C7E9-4506-AD4D-A8F6ACB8BE93}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RekenMachineAPI.DAL</RootNamespace>
+    <AssemblyName>RekenMachineAPI.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EntityTypeConfiguration\ExpressionConfiguration.cs" />
+    <Compile Include="Migrations\201709201402394_InitialMigration.cs" />
+    <Compile Include="Migrations\201709201402394_InitialMigration.Designer.cs">
+      <DependentUpon>201709201402394_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Context.cs" />
+    <Compile Include="DALModule.cs" />
+    <Compile Include="Migrations\201805241310468_added-anothervalue.cs" />
+    <Compile Include="Migrations\201805241310468_added-anothervalue.Designer.cs">
+      <DependentUpon>201805241310468_added-anothervalue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807130807376_DeleteSamplesTable.cs" />
+    <Compile Include="Migrations\201807130807376_DeleteSamplesTable.Designer.cs">
+      <DependentUpon>201807130807376_DeleteSamplesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807130841552_AddExpressionsTable.cs" />
+    <Compile Include="Migrations\201807130841552_AddExpressionsTable.Designer.cs">
+      <DependentUpon>201807130841552_AddExpressionsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807130944457_ChangeLayoutExpressionsTable.cs" />
+    <Compile Include="Migrations\201807130944457_ChangeLayoutExpressionsTable.Designer.cs">
+      <DependentUpon>201807130944457_ChangeLayoutExpressionsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807160811340_AddPersonTable.cs" />
+    <Compile Include="Migrations\201807160811340_AddPersonTable.Designer.cs">
+      <DependentUpon>201807160811340_AddPersonTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807160958451_AddCalculationTypesTable.cs" />
+    <Compile Include="Migrations\201807160958451_AddCalculationTypesTable.Designer.cs">
+      <DependentUpon>201807160958451_AddCalculationTypesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807160959549_PopulatingCalculationTypesTable.cs" />
+    <Compile Include="Migrations\201807160959549_PopulatingCalculationTypesTable.Designer.cs">
+      <DependentUpon>201807160959549_PopulatingCalculationTypesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RekenMachineAPI.Domain\RekenMachineAPI.Domain.csproj">
+      <Project>{9840CC6F-90F9-4434-9264-18147784BCF1}</Project>
+      <Name>RekenMachineAPI.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201709201402394_InitialMigration.resx">
+      <DependentUpon>201709201402394_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805241310468_added-anothervalue.resx">
+      <DependentUpon>201805241310468_added-anothervalue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807130807376_DeleteSamplesTable.resx">
+      <DependentUpon>201807130807376_DeleteSamplesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807130841552_AddExpressionsTable.resx">
+      <DependentUpon>201807130841552_AddExpressionsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807130944457_ChangeLayoutExpressionsTable.resx">
+      <DependentUpon>201807130944457_ChangeLayoutExpressionsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807160811340_AddPersonTable.resx">
+      <DependentUpon>201807160811340_AddPersonTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807160958451_AddCalculationTypesTable.resx">
+      <DependentUpon>201807160958451_AddCalculationTypesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807160959549_PopulatingCalculationTypesTable.resx">
+      <DependentUpon>201807160959549_PopulatingCalculationTypesTable.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
