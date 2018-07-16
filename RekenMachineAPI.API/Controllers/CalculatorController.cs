@@ -11,14 +11,14 @@ namespace RekenMachineAPI.API.Controllers
     public class CalculatorController : BaseApiController
     {
         [HttpGet, Route("api/calculator")]
-        public async Task<IHttpActionResult> Get()
-        {
-            using (var ctx = new Context())
-            {
-                var calculations = ctx.Expressions.ToList();
-                return Ok(calculations);
-            }
-        }
+//        public async Task<IHttpActionResult> Get()
+//        {
+////            using (var ctx = new Context())
+////            {
+////                var calculations = ctx.Expressions.ToList();
+////                return Ok(calculations);
+////            }
+//        }
 
         [HttpPost, Route("api/calculator/{input}")]
         public async Task<IHttpActionResult> Post(string input)
