@@ -33,15 +33,23 @@ namespace RekenMachineAPI.Service
             return expression;
         }
 
-        private bool LogExpression(Expression expression)
+        private void LogExpression(Expression expression)
         {
-            Calculation calculation = new Calculation();
+            Calculation calculation = new Calculation
+            {
+                Created = DateTime.Now
+            };
+            // mapping
+            calculation.CalculationString = expression.ExpressionAsString;
+            calculation.Value = expression.Val;
+            calculation.CalculationTypeId = (int)expression.Operation;
+
             _calculationService.Add(calculation);
             _calculationService.SaveChangesAsync();
             
 
 
-            throw new NotImplementedException();
+//            throw new NotImplementedException();
         }
     }
 }
