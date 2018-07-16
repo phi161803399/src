@@ -8,7 +8,7 @@ namespace RekenMachineAPI.DAL
 {
     public class Context : DbContext
     {
-//        public DbSet<Calculation> Calculations { get; set; }
+        public DbSet<Calculation> Calculations { get; set; }
         public DbSet<Person> Persons { get; set; }
         public DbSet<CalculationType> CalculationTypes { get; set; }    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
