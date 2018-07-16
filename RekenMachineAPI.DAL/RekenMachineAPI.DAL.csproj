@@ -44,7 +44,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityTypeConfiguration\ExpressionConfiguration.cs" />
     <Compile Include="Migrations\201709201402394_InitialMigration.cs" />
     <Compile Include="Migrations\201709201402394_InitialMigration.Designer.cs">
       <DependentUpon>201709201402394_InitialMigration.cs</DependentUpon>
