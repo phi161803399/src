@@ -78,6 +78,10 @@
     <Compile Include="Migrations\201807160959549_PopulatingCalculationTypesTable.Designer.cs">
       <DependentUpon>201807160959549_PopulatingCalculationTypesTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807161124085_RemoveExpressionTable.cs" />
+    <Compile Include="Migrations\201807161124085_RemoveExpressionTable.Designer.cs">
+      <DependentUpon>201807161124085_RemoveExpressionTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807160959549_PopulatingCalculationTypesTable.resx">
       <DependentUpon>201807160959549_PopulatingCalculationTypesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807161124085_RemoveExpressionTable.resx">
+      <DependentUpon>201807161124085_RemoveExpressionTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

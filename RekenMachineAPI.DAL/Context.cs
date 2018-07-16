@@ -1,7 +1,6 @@
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Reflection;
-using RekenMachineAPI.DAL.EntityTypeConfiguration;
 using RekenMachineAPI.DAL.Migrations;
 using RekenMachineAPI.Domain;
 
