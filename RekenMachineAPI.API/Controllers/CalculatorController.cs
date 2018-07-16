@@ -23,7 +23,6 @@ namespace RekenMachineAPI.API.Controllers
         [HttpPost, Route("api/calculator/{input}")]
         public async Task<IHttpActionResult> Post(string input)
         {
-//            llll
             return Ok();
             //using (var ctx = new Context())
             //{
