@@ -8,7 +8,11 @@ using RekenMachineAPI.Domain.Calculators;
 
 namespace RekenMachineAPI.Service
 {
-    public class CalculationService
+    public interface ICalculationService
+    {
+        Expression Calculate(string input);
+    }
+    public class CalculationService : ICalculationService
     {
         private Calculator _calculator;
         private readonly ICalculatorFactory _calculatorFactory;

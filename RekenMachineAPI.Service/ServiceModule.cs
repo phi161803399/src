@@ -1,4 +1,5 @@
 using Autofac;
+using RekenMachineAPI.Domain;
 
 namespace RekenMachineAPI.Service
 {
@@ -6,6 +7,12 @@ namespace RekenMachineAPI.Service
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<CalculationService>()
+                .As<ICalculationService>();
+            builder.RegisterType<CalculatorFactory>()
+                .As<ICalculatorFactory>();
+            builder.RegisterType<ParseService>()
+                .As<IParseService>();
             builder.RegisterType<BaseService>()
                 .As<IBaseService>()
                 .PropertiesAutowired();
