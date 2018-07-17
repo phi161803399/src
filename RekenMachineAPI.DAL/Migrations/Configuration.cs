@@ -8,5 +8,10 @@ namespace RekenMachineAPI.DAL.Migrations
         {
             AutomaticMigrationsEnabled = false;
         }
+
+        protected override void Seed(Context context)
+        {
+            base.Seed(context);
+        }
     }
 }
