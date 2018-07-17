@@ -27,13 +27,14 @@ namespace RekenMachineAPI.Service
                 return expression;
             }
 
+            throw new Exception(message);
 
-            return expression;
+//            return expression;
         }
 
         private bool TryparseExpressionBody(string input, Expression expression, out string message)
         {
-            string matchPattern = @"^([0-9.]+)\s*(\D+)\s*([\.\(\)0-9*\D]*)";
+            string matchPattern = @"^([0-9.]+)\s*(\D+)\s*([\.\(\)0-9*\D]+)";
             var x = Regex.Match(input, matchPattern);
 
             if (x.Success)
@@ -54,7 +55,7 @@ namespace RekenMachineAPI.Service
 
         private bool TryParseExpressionEnd(string input, out decimal? output)
         {
-            string endPattern = @"^([0-9.]*)$";
+            string endPattern = @"^([0-9.]+)$";
             var y = Regex.Match(input, endPattern);
             if (y.Success)
                 //tryparse

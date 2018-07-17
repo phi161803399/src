@@ -69,7 +69,6 @@
     <Compile Include="Calculators\SubtractionCalculator.cs" />
     <Compile Include="CalculatorTest.cs" />
     <Compile Include="GenericService.cs" />
-    <Compile Include="ICalculationService.cs" />
     <Compile Include="ICalculatorFactory.cs" />
     <Compile Include="IParseService.cs" />
     <Compile Include="IService.cs" />

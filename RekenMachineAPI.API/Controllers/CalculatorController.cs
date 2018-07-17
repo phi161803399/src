@@ -12,9 +12,9 @@ namespace RekenMachineAPI.API.Controllers
     [RoutePrefix("api/calculators")]
     public class CalculatorController : BaseApiController
     {
-        private readonly CalculationService _calculationService;
+        private readonly ICalculationService _calculationService;
 
-        public CalculatorController(CalculationService calculationService)
+        public CalculatorController(ICalculationService calculationService)
         {
             _calculationService = calculationService;
         }
