@@ -30,12 +30,12 @@ namespace RekenMachineAPI.API.Controllers
         [HttpGet, Route("{id}")]
         public async Task<IHttpActionResult> Get(int id)
         {
-            var person = await _calculationService.GetAsyncEf(id);
+            var calculation = await _calculationService.GetAsyncEf(id);
 
-            if (person == null)
+            if (calculation == null)
                 return NotFound();
 
-            return Ok(person);
+            return Ok(calculation);
         }
 
 
@@ -46,7 +46,7 @@ namespace RekenMachineAPI.API.Controllers
 
 //            _calculationService.Add(calculation);
 //            await _calculationService.SaveChangesAsync();
-            return Ok(calculation);
+            return Ok(calculation.CalculationString + " added to database");
         }
 
         [HttpPut, Route("{id}")]
