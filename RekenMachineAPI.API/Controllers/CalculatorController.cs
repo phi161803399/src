@@ -12,11 +12,12 @@ namespace RekenMachineAPI.API.Controllers
     [RoutePrefix("api/calculators")]
     public class CalculatorController : BaseApiController
     {
-        private readonly ICalculationService _calculationService;
+        private readonly ICalculatorService _calculatorService;
+        private readonly IService<Calculation> _calculationService;
 
-        public CalculatorController(ICalculationService calculationService)
+        public CalculatorController(ICalculatorService calculatorService)
         {
-            _calculationService = calculationService;
+            _calculatorService = calculatorService;
         }
 
 //        [HttpGet, Route]
@@ -40,9 +41,7 @@ namespace RekenMachineAPI.API.Controllers
         [HttpPost, Route]
         public async Task<IHttpActionResult> Post(Calculation calculation)
         {
-            _calculationService.Calculate(calculation.CalculationString);
-
-
+            _calculatorService.Calculate(calculation.CalculationString);
 //
 //            _calculationService.Add(calculation);
 //            await _calculationService.SaveChangesAsync();
@@ -63,18 +62,18 @@ namespace RekenMachineAPI.API.Controllers
 //            return Ok();
 //        }
 //
-//        [HttpDelete, Route("{id}")]
-//        public async Task<IHttpActionResult> Delete(int id)
-//        {
-//            var personToDelete = await _calculationService.GetAsyncEf(id);
-//
-//            if (personToDelete == null)
-//                return NotFound();
-//
-//            _calculationService.Delete(personToDelete);
-//            await _calculationService.SaveChangesAsync();
-//
-//            return Ok();
-//        }
+        [HttpDelete, Route("{id}")]
+        public async Task<IHttpActionResult> Delete(int id)
+        {
+            var calculationToDelete = await _calculationService.GetAsyncEf(id);
+
+            if (calculationToDelete == null)
+                return NotFound();
+
+            _calculationService.Delete(calculationToDelete);
+            await _calculationService.SaveChangesAsync();
+
+            return Ok();
+        }
     }
 }

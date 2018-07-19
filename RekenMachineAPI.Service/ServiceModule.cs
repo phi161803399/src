@@ -7,8 +7,8 @@ namespace RekenMachineAPI.Service
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<CalculationService>()
-                .As<ICalculationService>();
+            builder.RegisterType<CalculatorService>()
+                .As<ICalculatorService>();
             builder.RegisterType<CalculatorFactory>()
                 .As<ICalculatorFactory>();
             builder.RegisterType<ParseService>()

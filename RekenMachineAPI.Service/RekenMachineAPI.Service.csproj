@@ -60,7 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseService.cs" />
-    <Compile Include="CalculationService.cs" />
+    <Compile Include="CalculatorService.cs" />
     <Compile Include="CalculatorFactory.cs" />
     <Compile Include="Calculators\AdditionCalculator.cs" />
     <Compile Include="Calculators\Calculator.cs" />
