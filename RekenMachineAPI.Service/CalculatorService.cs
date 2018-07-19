@@ -38,7 +38,7 @@ namespace RekenMachineAPI.Service
             expression.Val = _calculator.Calculate(expression);
 
             // testing
-            elements.Add(expression);
+//            elements.Add(expression);
 
 
             LogExpression(expression);
