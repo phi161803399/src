@@ -34,7 +34,7 @@ namespace RekenMachineAPI.Service
 
         private bool TryparseExpressionBody(string input, Expression expression, out string message)
         {
-            string matchPattern = @"^([\.\(\)0-9*\D]+)\s*(\D+)\s*[0-9.]+)";
+            string matchPattern = @"^([0-9.]+)\s*(\D+)\s*([\.\(\)0-9*\D]+)";
             var x = Regex.Match(input, matchPattern);
 
             if (x.Success)
