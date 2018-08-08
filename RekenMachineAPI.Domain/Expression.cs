@@ -23,7 +23,7 @@ namespace RekenMachineAPI.Domain
 
         public override string ToString()
         {
-            return $"{LeftHand} {Operation} {RightHand} = {Val}\r\n";
+            return $"{LeftHand.Val} {Operation} {RightHand.Val} = {Val}\r\n";
         }
 
     }

@@ -3,6 +3,7 @@ using RekenMachineAPI.Domain.Calculators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace RekenMachineAPI.Service
 {
@@ -56,10 +57,8 @@ namespace RekenMachineAPI.Service
         private CalculationType DetermineCalculationType(Expression expression)
         {
             // in expressie: vind alle verschillende operaties (recursief)
-            List<OperationType> allOperationTypes = new List<OperationType>();
-            allOperationTypes.Add(expression.Operation);
-            DetermineCalculationType(expression.LeftHand);
-            DetermineCalculationType(expression.RightHand);
+            List<OperationType> listOfOperationTypes = new List<OperationType>();
+            StoreOperator(expression, listOfOperationTypes);
 
             // dan haal calculationtypes op
             var calculationTypes = _calculationTypeService.GetEf();
@@ -73,6 +72,13 @@ namespace RekenMachineAPI.Service
                 case OperationType.Subtraction: return calculationTypes.SingleOrDefault(x => x.Name == "subtraction");
                 default: return calculationTypes.SingleOrDefault(x => x.Name == "mixed");
             }
+        }
+
+        private void StoreOperator(Expression expression, List<OperationType> listOfOperationTypes)
+        {
+            if (expression.RightHand.Operation != 0)
+                StoreOperator(expression.RightHand, listOfOperationTypes);
+            listOfOperationTypes.Add(expression.Operation);
         }
     }
 }

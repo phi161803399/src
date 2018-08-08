@@ -27,8 +27,6 @@ namespace RekenMachineAPI.Service
                 return expression;
             }
             throw new Exception(message);
-
-//            return expression;
         }
 
         private bool TryparseExpressionBody(string input, Expression expression, out string message)
