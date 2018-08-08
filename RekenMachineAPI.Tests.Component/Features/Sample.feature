@@ -2,7 +2,7 @@ Feature: Sample api
 
 Background: 
 	Given I seed the following samples
-	| Id | Value |
+	| Id | Values |
 	| 1  | a     |
 	| 2  | b     |
 

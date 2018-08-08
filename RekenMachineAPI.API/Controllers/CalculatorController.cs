@@ -1,11 +1,8 @@
-﻿using System;
+﻿using RekenMachineAPI.Domain;
+using RekenMachineAPI.Service;
 using System.Data.Entity;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
-using RekenMachineAPI.DAL;
-using RekenMachineAPI.Domain;
-using RekenMachineAPI.Service;
 
 namespace RekenMachineAPI.API.Controllers
 {
@@ -40,13 +37,11 @@ namespace RekenMachineAPI.API.Controllers
 
 
         [HttpPost, Route]
-        public async Task<IHttpActionResult> Post(Calculation calculation)
+        public async Task<IHttpActionResult> Post(string calculationInput)
         {
-            _calculatorService.Calculate(calculation.CalculationString);
-
-//            _calculationService.Add(calculation);
-//            await _calculationService.SaveChangesAsync();
-            return Ok(calculation.CalculationString + " added to database");
+            var value = _calculatorService.Calculate(calculationInput);
+ 
+            return Ok(value.Val);
         }
 
         [HttpPut, Route("{id}")]

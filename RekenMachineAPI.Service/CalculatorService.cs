@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using RekenMachineAPI.Domain;
+﻿using RekenMachineAPI.Domain;
 using RekenMachineAPI.Domain.Calculators;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace RekenMachineAPI.Service
 {
@@ -18,29 +16,23 @@ namespace RekenMachineAPI.Service
         private readonly ICalculatorFactory _calculatorFactory;
         private readonly IParseService _parseService;
         private readonly IService<Calculation> _calculationService;
+        private readonly IService<CalculationType> _calculationTypeService;
 
 
-        // testing
-        private List<Expression> elements = new List<Expression>();
-
-        public CalculatorService(IParseService parseService, ICalculatorFactory calculatorFactory, IService<Calculation> calculationService)
+        public CalculatorService(IParseService parseService, ICalculatorFactory calculatorFactory, IService<Calculation> calculationService, IService<CalculationType> calculationTypeService)
         {
             _parseService = parseService;
             _calculatorFactory = calculatorFactory;
             _calculationService = calculationService;
+            _calculationTypeService = calculationTypeService;
         }
 
         public Expression Calculate(string input)
         {
-            StringBuilder log = new StringBuilder();
             Expression expression = _parseService.Parse(input);
             _calculator = _calculatorFactory.Resolve(expression);
             expression.Val = _calculator.Calculate(expression);
-
-            // testing
-//            elements.Add(expression);
-
-
+           
             LogExpression(expression);
             return expression;
         }
@@ -52,16 +44,35 @@ namespace RekenMachineAPI.Service
                 Created = DateTime.Now
             };
             // mapping
+            //calculation.inputString
             calculation.CalculationString = expression.ExpressionAsString;
             calculation.Value = expression.Val;
-            calculation.CalculationTypeId = (int)expression.Operation;
+            calculation.CalculationType = DetermineCalculationType(expression);
 
             _calculationService.Add(calculation);
             _calculationService.SaveChangesAsync();
-            
+        }
 
+        private CalculationType DetermineCalculationType(Expression expression)
+        {
+            // in expressie: vind alle verschillende operaties (recursief)
+            List<OperationType> allOperationTypes = new List<OperationType>();
+            allOperationTypes.Add(expression.Operation);
+            DetermineCalculationType(expression.LeftHand);
+            DetermineCalculationType(expression.RightHand);
 
-//            throw new NotImplementedException();
+            // dan haal calculationtypes op
+            var calculationTypes = _calculationTypeService.GetEf();
+
+            // Factory maken zoals CalculatorFactory
+            switch (expression.Operation)
+            {
+                case OperationType.Addition: return calculationTypes.SingleOrDefault(x => x.Name == "addition");
+                case OperationType.Division: return calculationTypes.SingleOrDefault(x => x.Name == "division");
+                case OperationType.Product: return calculationTypes.SingleOrDefault(x => x.Name == "product");
+                case OperationType.Subtraction: return calculationTypes.SingleOrDefault(x => x.Name == "subtraction");
+                default: return calculationTypes.SingleOrDefault(x => x.Name == "mixed");
+            }
         }
     }
 }

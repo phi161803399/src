@@ -58,14 +58,6 @@
     <Compile Include="Migrations\201807130807376_DeleteSamplesTable.Designer.cs">
       <DependentUpon>201807130807376_DeleteSamplesTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807130841552_AddExpressionsTable.cs" />
-    <Compile Include="Migrations\201807130841552_AddExpressionsTable.Designer.cs">
-      <DependentUpon>201807130841552_AddExpressionsTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807130944457_ChangeLayoutExpressionsTable.cs" />
-    <Compile Include="Migrations\201807130944457_ChangeLayoutExpressionsTable.Designer.cs">
-      <DependentUpon>201807130944457_ChangeLayoutExpressionsTable.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201807160811340_AddPersonTable.cs" />
     <Compile Include="Migrations\201807160811340_AddPersonTable.Designer.cs">
       <DependentUpon>201807160811340_AddPersonTable.cs</DependentUpon>
@@ -105,12 +97,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807130807376_DeleteSamplesTable.resx">
       <DependentUpon>201807130807376_DeleteSamplesTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807130841552_AddExpressionsTable.resx">
-      <DependentUpon>201807130841552_AddExpressionsTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807130944457_ChangeLayoutExpressionsTable.resx">
-      <DependentUpon>201807130944457_ChangeLayoutExpressionsTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807160811340_AddPersonTable.resx">
       <DependentUpon>201807160811340_AddPersonTable.cs</DependentUpon>

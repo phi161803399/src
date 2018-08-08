@@ -7,10 +7,10 @@ namespace RekenMachineAPI.DAL.Migrations
     {
         public override void Up()
         {
-            Sql("INSERT INTO CalculationTypes VALUES ('*')");
-            Sql("INSERT INTO CalculationTypes VALUES ('/')");
-            Sql("INSERT INTO CalculationTypes VALUES ('+')");
-            Sql("INSERT INTO CalculationTypes VALUES ('-')");
+            Sql("INSERT INTO CalculationTypes VALUES ('product')");
+            Sql("INSERT INTO CalculationTypes VALUES ('division')");
+            Sql("INSERT INTO CalculationTypes VALUES ('addition')");
+            Sql("INSERT INTO CalculationTypes VALUES ('subtraction')");
             Sql("INSERT INTO CalculationTypes VALUES ('mixed')");
         }
         

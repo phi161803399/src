@@ -26,7 +26,6 @@ namespace RekenMachineAPI.Service
                 expression.Val = value.Value;
                 return expression;
             }
-
             throw new Exception(message);
 
 //            return expression;
