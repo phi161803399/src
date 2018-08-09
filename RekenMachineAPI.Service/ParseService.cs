@@ -1,7 +1,6 @@
-﻿using System;
-using System.Text;
+﻿using RekenMachineAPI.Domain;
+using System;
 using System.Text.RegularExpressions;
-using RekenMachineAPI.Domain;
 
 namespace RekenMachineAPI.Service
 {
@@ -11,19 +10,14 @@ namespace RekenMachineAPI.Service
         public Expression Parse(string input)
         {
             Expression expression = new Expression(input);
-            decimal? value;
-            string message;
-            //todo afhandelen van niet-succes
-            if (TryparseExpressionBody(input, expression, out message))
-            {
-                // when expression is like '3+5' method will parse into two new expressions
+            if (TryparseExpressionBody(input, expression, out var message))
+            { 
                 return expression;
             }
 
-            if (TryParseExpressionEnd(input, out value))
+            if (TryParseExpressionEnd(input, out var value))
             {
-                // when expression is a decimal number like '3' this method will return an expression with Val = 3
-                expression.Val = value.Value;
+                if (value != null) expression.Val = value.Value;
                 return expression;
             }
             throw new Exception(message);
@@ -55,7 +49,6 @@ namespace RekenMachineAPI.Service
             string endPattern = @"^([0-9.]+)$";
             var y = Regex.Match(input, endPattern);
             if (y.Success)
-                //tryparse
                 output = decimal.Parse(y.Groups[1].ToString());
             else
                 output = null;

@@ -1,8 +1,7 @@
 ﻿using RekenMachineAPI.Domain;
-using System;
-using System.Linq;
 using RekenMachineAPI.Service.Calculators;
 using RekenMachineAPI.Service.Operators;
+using System;
 
 namespace RekenMachineAPI.Service
 {
@@ -46,8 +45,6 @@ namespace RekenMachineAPI.Service
             {
                 Created = DateTime.Now
             };
-            // mapping
-            //calculation.inputString
             calculation.CalculationString = expression.ExpressionAsString;
             calculation.Value = expression.Val;
             calculation.CalculationType = DetermineCalculationType(expression);
@@ -58,46 +55,13 @@ namespace RekenMachineAPI.Service
 
         private CalculationType DetermineCalculationType(Expression expression)
         {
-
             OperationTypeFlags ops = 0;
             StoreOperator2(expression, ref ops);
-
-
-            //in expressie: vind alle verschillende operaties(recursief)
-//            List<OperationType> listOfOperationTypes = new List<OperationType>();
-//            StoreOperator(expression, listOfOperationTypes);
-
-
-
-
-            // dan haal calculationtypes op
             var calculationTypes = _calculationTypeService.GetEf();
 
-            // Factory maken zoals CalculatorFactory
             _operator = _operatorFactory.Resolve(ops);
             return _operator.GetCalculationType(calculationTypes);
-
-            switch (expression.Operation)
-            {
-                case OperationTypeFlags.Addition: return calculationTypes.SingleOrDefault(x => x.Name == "addition");
-                case OperationTypeFlags.Division: return calculationTypes.SingleOrDefault(x => x.Name == "division");
-                case OperationTypeFlags.Product: return calculationTypes.SingleOrDefault(x => x.Name == "product");
-                case OperationTypeFlags.Subtraction: return calculationTypes.SingleOrDefault(x => x.Name == "subtraction");
-                default: return calculationTypes.SingleOrDefault(x => x.Name == "mixed");
-            }
         }
-
-//        private void StoreOperator(Expression expression, List<OperationType> listOfOperationTypes)
-//        {
-//
-//            if (expression.RightHand.Operation == OperationType.Addition 
-//                || expression.RightHand.Operation == OperationType.Subtraction 
-//                || expression.RightHand.Operation == OperationType.Product 
-//                || expression.RightHand.Operation == OperationType.Division)
-//                StoreOperator(expression.RightHand, listOfOperationTypes);
-//            listOfOperationTypes.Add(expression.Operation);
-//        }
-
         private void StoreOperator2(Expression expression, ref OperationTypeFlags ops)
         {
             if (expression.RightHand.Operation != 0)

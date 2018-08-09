@@ -1,8 +1,8 @@
 ﻿using System;
-using RekenMachineAPI.Service;
+using RekenMachineAPI.Domain;
 using RekenMachineAPI.Service.Calculators;
 
-namespace RekenMachineAPI.Domain
+namespace RekenMachineAPI.Service
 {
     public class CalculatorFactory : ICalculatorFactory
     {
@@ -16,7 +16,7 @@ namespace RekenMachineAPI.Domain
                 return new SubtractionCalculator(this);
             else if (expression.Operation == OperationTypeFlags.Addition)
                 return new AdditionCalculator(this);
-            throw new NotImplementedException(String.Format("operation {0} is not implemented", expression.Operation));
+            throw new NotImplementedException($"operation {expression.Operation} is not implemented");
         }
     }
 }

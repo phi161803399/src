@@ -4,7 +4,7 @@ namespace RekenMachineAPI.Service.Calculators
 {
     public abstract class Calculator
     {
-        protected CalculatorFactory _calculatorFactory;
+        private readonly CalculatorFactory _calculatorFactory;
         protected void EnsureRightHandSide(Expression expression)
         {
             // val moet decimal?

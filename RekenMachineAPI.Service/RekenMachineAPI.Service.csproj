@@ -67,7 +67,6 @@
     <Compile Include="Calculators\DivisionCalculator.cs" />
     <Compile Include="Calculators\ProductCalculator.cs" />
     <Compile Include="Calculators\SubtractionCalculator.cs" />
-    <Compile Include="CalculatorTest.cs" />
     <Compile Include="Operators\DivisionOperator.cs" />
     <Compile Include="GenericService.cs" />
     <Compile Include="ICalculatorFactory.cs" />
