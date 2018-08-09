@@ -202,7 +202,6 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CalculatorController.cs" />
     <Compile Include="Controllers\LogsController.cs" />
-    <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\SampleController.cs" />
     <Compile Include="DependenciesConfig.cs" />
     <Compile Include="GlobalExceptionLogger.cs" />

@@ -39,7 +39,6 @@
     <Compile Include="CalculationType.cs" />
     <Compile Include="Expression.cs" />
     <Compile Include="OperationType.cs" />
-    <Compile Include="Person.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
