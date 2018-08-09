@@ -113,15 +113,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\ContainerBuilderExtensions.cs" />
-    <Compile Include="Helpers\DatabaseManager.cs" />
-    <Compile Include="TestModule.cs" />
-    <Compile Include="Helpers\TestServerExtensions.cs" />
-    <Compile Include="Features\Sample.feature.cs">
+    <Compile Include="Features\Calculator.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Sample.feature</DependentUpon>
+      <DependentUpon>Calculator.feature</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ContainerBuilderExtensions.cs" />
+    <Compile Include="Helpers\DatabaseManager.cs" />
+    <Compile Include="Steps\CalculatorSteps.cs" />
+    <Compile Include="TestModule.cs" />
+    <Compile Include="Helpers\TestServerExtensions.cs" />
     <Compile Include="DeepObjectComparer.cs" />
     <Compile Include="Steps\SampleSteps.cs" />
     <Compile Include="Setup.cs" />
@@ -129,9 +130,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Features\Sample.feature">
+    <None Include="Features\Calculator.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>Sample.feature.cs</LastGenOutput>
+      <LastGenOutput>Calculator.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>

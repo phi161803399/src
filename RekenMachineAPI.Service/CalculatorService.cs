@@ -3,7 +3,6 @@ using RekenMachineAPI.Domain.Calculators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 
 namespace RekenMachineAPI.Service
 {
@@ -56,14 +55,27 @@ namespace RekenMachineAPI.Service
 
         private CalculationType DetermineCalculationType(Expression expression)
         {
-            // in expressie: vind alle verschillende operaties (recursief)
+
+            //OperationTypeFlags ops = StoreOperator2(expression, 0);
+             //in expressie: vind alle verschillende operaties(recursief)
             List<OperationType> listOfOperationTypes = new List<OperationType>();
             StoreOperator(expression, listOfOperationTypes);
+
+
+
 
             // dan haal calculationtypes op
             var calculationTypes = _calculationTypeService.GetEf();
 
             // Factory maken zoals CalculatorFactory
+            foreach (var op in listOfOperationTypes)
+            {
+                if (op == OperationType.Addition)
+                {
+
+                }
+            }
+
             switch (expression.Operation)
             {
                 case OperationType.Addition: return calculationTypes.SingleOrDefault(x => x.Name == "addition");
@@ -76,9 +88,29 @@ namespace RekenMachineAPI.Service
 
         private void StoreOperator(Expression expression, List<OperationType> listOfOperationTypes)
         {
-            if (expression.RightHand.Operation != 0)
+
+            if (expression.RightHand.Operation == OperationType.Addition 
+                || expression.RightHand.Operation == OperationType.Subtraction 
+                || expression.RightHand.Operation == OperationType.Product 
+                || expression.RightHand.Operation == OperationType.Division)
                 StoreOperator(expression.RightHand, listOfOperationTypes);
             listOfOperationTypes.Add(expression.Operation);
         }
+
+        //private OperationTypeFlags StoreOperator2(Expression expression, OperationTypeFlags ops)
+        //{
+
+        //    if (expression.RightHand.Operation != 0)
+        //    {
+        //        //ops |= expression.RightHand.Operation;
+        //        ops |= StoreOperator2(expression.RightHand, ops);
+                
+        //    }
+        //    else
+        //        ops != expression.Operation;
+
+        //    return ops;
+        //    //listOfOperationTypes.Add(expression.Operation);
+        //}
     }
 }

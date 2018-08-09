@@ -34,8 +34,8 @@ namespace RekenMachineAPI.Tests.Component.Helpers
             using (var conn = new SqlConnection(ConnectionString.ConnectionString))
             {
                 conn.Open();
-                var command = new SqlCommand(@"truncate table samples", conn);
-                command.ExecuteNonQuery();
+//                var command = new SqlCommand(@"truncate table samples", conn);
+//                command.ExecuteNonQuery();
             }
         }
     }
