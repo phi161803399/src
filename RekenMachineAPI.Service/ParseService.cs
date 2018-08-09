@@ -63,18 +63,18 @@ namespace RekenMachineAPI.Service
             return y.Success;
         }
 
-        private OperationType GetOperator(string op)
+        private OperationTypeFlags GetOperator(string op)
         {
             switch (op)
             {
                 case "keer":
-                    return OperationType.Product;
+                    return OperationTypeFlags.Product;
                 case "delen":
-                    return OperationType.Division;
+                    return OperationTypeFlags.Division;
                 case "plus":
-                    return OperationType.Addition;
+                    return OperationTypeFlags.Addition;
                 case "min":
-                    return OperationType.Subtraction;
+                    return OperationTypeFlags.Subtraction;
             }
 
             throw new NotImplementedException("string contains unidentified Operation");

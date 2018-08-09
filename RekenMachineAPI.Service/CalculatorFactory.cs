@@ -7,13 +7,13 @@ namespace RekenMachineAPI.Domain
     {
         public Calculator Resolve(Expression expression)
         {
-            if (expression.Operation == OperationType.Product)
+            if (expression.Operation == OperationTypeFlags.Product)
                 return new ProductCalculator(this);
-            else if (expression.Operation == OperationType.Division)
+            else if (expression.Operation == OperationTypeFlags.Division)
                 return new DivisionCalculator(this);
-            else if (expression.Operation == OperationType.Subtraction)
+            else if (expression.Operation == OperationTypeFlags.Subtraction)
                 return new SubtractionCalculator(this);
-            else if (expression.Operation == OperationType.Addition)
+            else if (expression.Operation == OperationTypeFlags.Addition)
                 return new AdditionCalculator(this);
             throw new NotImplementedException(String.Format("operation {0} is not implemented", expression.Operation));
         }

@@ -1,7 +1,6 @@
 ﻿using RekenMachineAPI.Domain;
 using RekenMachineAPI.Domain.Calculators;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace RekenMachineAPI.Service
@@ -56,10 +55,13 @@ namespace RekenMachineAPI.Service
         private CalculationType DetermineCalculationType(Expression expression)
         {
 
-            //OperationTypeFlags ops = StoreOperator2(expression, 0);
-             //in expressie: vind alle verschillende operaties(recursief)
-            List<OperationType> listOfOperationTypes = new List<OperationType>();
-            StoreOperator(expression, listOfOperationTypes);
+            OperationTypeFlags ops = 0;
+            StoreOperator2(expression, ref ops);
+
+
+            //in expressie: vind alle verschillende operaties(recursief)
+//            List<OperationType> listOfOperationTypes = new List<OperationType>();
+//            StoreOperator(expression, listOfOperationTypes);
 
 
 
@@ -68,49 +70,33 @@ namespace RekenMachineAPI.Service
             var calculationTypes = _calculationTypeService.GetEf();
 
             // Factory maken zoals CalculatorFactory
-            foreach (var op in listOfOperationTypes)
-            {
-                if (op == OperationType.Addition)
-                {
-
-                }
-            }
 
             switch (expression.Operation)
             {
-                case OperationType.Addition: return calculationTypes.SingleOrDefault(x => x.Name == "addition");
-                case OperationType.Division: return calculationTypes.SingleOrDefault(x => x.Name == "division");
-                case OperationType.Product: return calculationTypes.SingleOrDefault(x => x.Name == "product");
-                case OperationType.Subtraction: return calculationTypes.SingleOrDefault(x => x.Name == "subtraction");
+                case OperationTypeFlags.Addition: return calculationTypes.SingleOrDefault(x => x.Name == "addition");
+                case OperationTypeFlags.Division: return calculationTypes.SingleOrDefault(x => x.Name == "division");
+                case OperationTypeFlags.Product: return calculationTypes.SingleOrDefault(x => x.Name == "product");
+                case OperationTypeFlags.Subtraction: return calculationTypes.SingleOrDefault(x => x.Name == "subtraction");
                 default: return calculationTypes.SingleOrDefault(x => x.Name == "mixed");
             }
         }
 
-        private void StoreOperator(Expression expression, List<OperationType> listOfOperationTypes)
+//        private void StoreOperator(Expression expression, List<OperationType> listOfOperationTypes)
+//        {
+//
+//            if (expression.RightHand.Operation == OperationType.Addition 
+//                || expression.RightHand.Operation == OperationType.Subtraction 
+//                || expression.RightHand.Operation == OperationType.Product 
+//                || expression.RightHand.Operation == OperationType.Division)
+//                StoreOperator(expression.RightHand, listOfOperationTypes);
+//            listOfOperationTypes.Add(expression.Operation);
+//        }
+
+        private void StoreOperator2(Expression expression, ref OperationTypeFlags ops)
         {
-
-            if (expression.RightHand.Operation == OperationType.Addition 
-                || expression.RightHand.Operation == OperationType.Subtraction 
-                || expression.RightHand.Operation == OperationType.Product 
-                || expression.RightHand.Operation == OperationType.Division)
-                StoreOperator(expression.RightHand, listOfOperationTypes);
-            listOfOperationTypes.Add(expression.Operation);
+            if (expression.RightHand.Operation != 0)
+                StoreOperator2(expression.RightHand, ref ops);
+            ops |= expression.Operation;
         }
-
-        //private OperationTypeFlags StoreOperator2(Expression expression, OperationTypeFlags ops)
-        //{
-
-        //    if (expression.RightHand.Operation != 0)
-        //    {
-        //        //ops |= expression.RightHand.Operation;
-        //        ops |= StoreOperator2(expression.RightHand, ops);
-                
-        //    }
-        //    else
-        //        ops != expression.Operation;
-
-        //    return ops;
-        //    //listOfOperationTypes.Add(expression.Operation);
-        //}
     }
 }
