@@ -1,4 +1,6 @@
-﻿namespace RekenMachineAPI.Domain.Calculators
+﻿using RekenMachineAPI.Domain;
+
+namespace RekenMachineAPI.Service.Calculators
 {
     public class DivisionCalculator : Calculator
     {

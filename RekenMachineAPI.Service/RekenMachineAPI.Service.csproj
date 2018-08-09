@@ -68,14 +68,19 @@
     <Compile Include="Calculators\ProductCalculator.cs" />
     <Compile Include="Calculators\SubtractionCalculator.cs" />
     <Compile Include="CalculatorTest.cs" />
+    <Compile Include="Operators\DivisionOperator.cs" />
     <Compile Include="GenericService.cs" />
     <Compile Include="ICalculatorFactory.cs" />
     <Compile Include="IParseService.cs" />
     <Compile Include="IService.cs" />
+    <Compile Include="Operators\AdditionOperator.cs" />
+    <Compile Include="Operators\MixedOperator.cs" />
     <Compile Include="Operators\Operator.cs" />
     <Compile Include="OperatorFactory.cs" />
     <Compile Include="ParseService.cs" />
+    <Compile Include="Operators\ProductOperator.cs" />
     <Compile Include="ServiceModule.cs" />
+    <Compile Include="Operators\SubtractionOperator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

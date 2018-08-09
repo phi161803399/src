@@ -11,6 +11,8 @@ namespace RekenMachineAPI.Service
                 .As<ICalculatorService>();
             builder.RegisterType<CalculatorFactory>()
                 .As<ICalculatorFactory>();
+            builder.RegisterType<OperatorFactory>()
+                .As<IOperatorFactory>();
             builder.RegisterType<ParseService>()
                 .As<IParseService>();
             builder.RegisterType<BaseService>()

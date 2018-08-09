@@ -1,17 +1,30 @@
-﻿using RekenMachineAPI.Service.Operators;
-using System;
+﻿using System;
+using RekenMachineAPI.Domain;
+using RekenMachineAPI.Service.Operators;
 
-namespace RekenMachineAPI.Domain
+namespace RekenMachineAPI.Service
 {
     public interface IOperatorFactory
     {
-        Operator Resolve(Expression expression);
+        Operator Resolve(OperationTypeFlags ops);
     }
-    class OperatorFactory : IOperatorFactory
+    public class OperatorFactory : IOperatorFactory
     {
-        public Operator Resolve(Expression expression)
+        public Operator Resolve(OperationTypeFlags ops)
         {
+            if (ops == OperationTypeFlags.Addition)
+                return new AdditionOperator();
+            else if (ops == OperationTypeFlags.Subtraction)
+                return new SubtractionOperator();
+            else if (ops == OperationTypeFlags.Product)
+                return new ProductOperator();
+            else if (ops == OperationTypeFlags.Division)
+                return new DivisionOperator();
+            else
+                return new MixedOperator();
             throw new NotImplementedException();
         }
     }
+
+    
 }

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using RekenMachineAPI.Domain;
 
-namespace RekenMachineAPI.Domain.Calculators
+namespace RekenMachineAPI.Service.Calculators
 {
     public abstract class Calculator
     {

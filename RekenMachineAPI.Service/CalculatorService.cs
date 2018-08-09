@@ -1,7 +1,8 @@
 ﻿using RekenMachineAPI.Domain;
-using RekenMachineAPI.Domain.Calculators;
 using System;
 using System.Linq;
+using RekenMachineAPI.Service.Calculators;
+using RekenMachineAPI.Service.Operators;
 
 namespace RekenMachineAPI.Service
 {
@@ -12,15 +13,18 @@ namespace RekenMachineAPI.Service
     public class CalculatorService : ICalculatorService
     {
         private Calculator _calculator;
+        private Operator _operator;
         private readonly ICalculatorFactory _calculatorFactory;
         private readonly IParseService _parseService;
+        private readonly IOperatorFactory _operatorFactory;
         private readonly IService<Calculation> _calculationService;
         private readonly IService<CalculationType> _calculationTypeService;
 
 
-        public CalculatorService(IParseService parseService, ICalculatorFactory calculatorFactory, IService<Calculation> calculationService, IService<CalculationType> calculationTypeService)
+        public CalculatorService(IParseService parseService, IOperatorFactory operatorFactory, ICalculatorFactory calculatorFactory, IService<Calculation> calculationService, IService<CalculationType> calculationTypeService)
         {
             _parseService = parseService;
+            _operatorFactory = operatorFactory;
             _calculatorFactory = calculatorFactory;
             _calculationService = calculationService;
             _calculationTypeService = calculationTypeService;
@@ -70,6 +74,8 @@ namespace RekenMachineAPI.Service
             var calculationTypes = _calculationTypeService.GetEf();
 
             // Factory maken zoals CalculatorFactory
+            _operator = _operatorFactory.Resolve(ops);
+            return _operator.GetCalculationType(calculationTypes);
 
             switch (expression.Operation)
             {

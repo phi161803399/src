@@ -1,5 +1,6 @@
-﻿using RekenMachineAPI.Domain.Calculators;
-using System;
+﻿using System;
+using RekenMachineAPI.Service;
+using RekenMachineAPI.Service.Calculators;
 
 namespace RekenMachineAPI.Domain
 {

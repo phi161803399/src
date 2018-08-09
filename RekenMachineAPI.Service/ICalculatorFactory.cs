@@ -1,6 +1,7 @@
-﻿using RekenMachineAPI.Domain.Calculators;
+﻿using RekenMachineAPI.Domain;
+using RekenMachineAPI.Service.Calculators;
 
-namespace RekenMachineAPI.Domain
+namespace RekenMachineAPI.Service
 {
     public interface ICalculatorFactory
     {

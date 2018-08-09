@@ -1,5 +1,6 @@
 ﻿using RekenMachineAPI.Domain;
-namespace RekenMachineAPI.Domain.Calculators
+
+namespace RekenMachineAPI.Service.Calculators
 {
     public class AdditionCalculator : Calculator
     {
