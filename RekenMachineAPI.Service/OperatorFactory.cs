@@ -5,23 +5,21 @@ namespace RekenMachineAPI.Service
 {
     public interface IOperatorFactory
     {
-        Operator Resolve(OperationTypeFlags ops);
+        Operator Resolve(OperationType ops);
     }
     public class OperatorFactory : IOperatorFactory
     {
-        public Operator Resolve(OperationTypeFlags ops)
+        public Operator Resolve(OperationType ops)
         {
-            if (ops == OperationTypeFlags.Addition)
+            if (ops == OperationType.Addition)
                 return new AdditionOperator();
-            if (ops == OperationTypeFlags.Subtraction)
+            if (ops == OperationType.Subtraction)
                 return new SubtractionOperator();
-            if (ops == OperationTypeFlags.Product)
+            if (ops == OperationType.Product)
                 return new ProductOperator();
-            if (ops == OperationTypeFlags.Division)
+            if (ops == OperationType.Division)
                 return new DivisionOperator();
             return new MixedOperator();
         }
     }
-
-    
 }

@@ -8,7 +8,7 @@ namespace RekenMachineAPI.Domain
         public DateTime DateCreated { get; set; }
         public Expression LeftHand { get; set; }
         public Expression RightHand { get; set; }
-        public OperationTypeFlags Operation { get; set; }
+        public OperationType Operation { get; set; }
 
         public decimal Val { get ; set; }
 

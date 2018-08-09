@@ -55,14 +55,14 @@ namespace RekenMachineAPI.Service
 
         private CalculationType DetermineCalculationType(Expression expression)
         {
-            OperationTypeFlags ops = 0;
+            OperationType ops = 0;
             StoreOperator2(expression, ref ops);
             var calculationTypes = _calculationTypeService.GetEf();
 
             _operator = _operatorFactory.Resolve(ops);
             return _operator.GetCalculationType(calculationTypes);
         }
-        private void StoreOperator2(Expression expression, ref OperationTypeFlags ops)
+        private void StoreOperator2(Expression expression, ref OperationType ops)
         {
             if (expression.RightHand.Operation != 0)
                 StoreOperator2(expression.RightHand, ref ops);

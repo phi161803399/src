@@ -21,7 +21,7 @@ namespace RekenMachineAPI.API.Controllers
         [HttpGet, Route]
         public async Task<IHttpActionResult> GetAll(string sort = null)
         {
-            return Ok(await _calculationService.GetEf().ToListAsync());
+            return Ok(await _calculationService.GetEf().Include(x => x.CalculationType).ToListAsync());
         }
 
         [HttpGet, Route("{id}")]
@@ -45,14 +45,14 @@ namespace RekenMachineAPI.API.Controllers
         }
 
         [HttpPut, Route("{id}")]
-        public async Task<IHttpActionResult> Put(int id, Calculation calculation)
+        public async Task<IHttpActionResult> Put(int id, string calculationInput)
         {
             var calculationToUpdate = await _calculationService.GetAsyncEf(id);
 
             if (calculationToUpdate == null)
                 return NotFound();
 
-            calculationToUpdate.CalculationString = calculation.CalculationString;
+            calculationToUpdate.CalculationString = calculationInput;
             await _calculationService.SaveChangesAsync();
 
             return Ok();
