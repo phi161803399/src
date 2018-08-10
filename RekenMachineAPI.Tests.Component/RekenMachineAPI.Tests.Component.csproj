@@ -113,6 +113,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Steps\CalculatorApiSteps.cs" />
     <Compile Include="Features\Calculator.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -120,7 +121,6 @@
     </Compile>
     <Compile Include="Helpers\ContainerBuilderExtensions.cs" />
     <Compile Include="Helpers\DatabaseManager.cs" />
-    <Compile Include="Steps\CalculatorSteps.cs" />
     <Compile Include="TestModule.cs" />
     <Compile Include="Helpers\TestServerExtensions.cs" />
     <Compile Include="DeepObjectComparer.cs" />

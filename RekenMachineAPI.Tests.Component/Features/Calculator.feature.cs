@@ -17,7 +17,7 @@ namespace RekenMachineAPI.Tests.Component.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.2.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class CalculatorFeature : Xunit.IClassFixture<CalculatorFeature.FixtureData>, System.IDisposable
+    public partial class CalculatorApiFeature : Xunit.IClassFixture<CalculatorApiFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -27,7 +27,7 @@ namespace RekenMachineAPI.Tests.Component.Features
 #line 1 "Calculator.feature"
 #line hidden
         
-        public CalculatorFeature(CalculatorFeature.FixtureData fixtureData, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public CalculatorApiFeature(CalculatorApiFeature.FixtureData fixtureData, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -36,8 +36,7 @@ namespace RekenMachineAPI.Tests.Component.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Calculator", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
-                    "f two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Calculator api", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -67,29 +66,71 @@ namespace RekenMachineAPI.Tests.Component.Features
             testRunner.CollectScenarioErrors();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 3
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "CalculationString",
+                        "Created",
+                        "Value",
+                        "CalculationTypeId"});
+            table1.AddRow(new string[] {
+                        "1",
+                        "3plus5",
+                        "9-8-2018 13:38:56",
+                        "8",
+                        "3"});
+            table1.AddRow(new string[] {
+                        "2",
+                        "3plus5keer10",
+                        "9-8-2018 14:05:04",
+                        "103",
+                        "5"});
+#line 4
+ testRunner.Given("I seed the following calculations", ((string)(null)), table1, "Given ");
+#line hidden
+        }
+        
         void System.IDisposable.Dispose()
         {
             this.ScenarioTearDown();
         }
         
-        [Xunit.FactAttribute(DisplayName="Add two numbers")]
-        [Xunit.TraitAttribute("FeatureTitle", "Calculator")]
-        [Xunit.TraitAttribute("Description", "Add two numbers")]
-        [Xunit.TraitAttribute("Category", "mytag")]
-        public virtual void AddTwoNumbers()
+        [Xunit.FactAttribute(DisplayName="Get calculations")]
+        [Xunit.TraitAttribute("FeatureTitle", "Calculator api")]
+        [Xunit.TraitAttribute("Description", "Get calculations")]
+        public virtual void GetCalculations()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", new string[] {
-                        "mytag"});
-#line 7
-this.ScenarioSetup(scenarioInfo);
-#line 8
- testRunner.Given("I have entered 50 into the calculator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get calculations", ((string[])(null)));
 #line 9
- testRunner.And("I have entered 70 into the calculator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
+#line 3
+this.FeatureBackground();
 #line 10
- testRunner.When("I press add", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I get all calculations", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "CalculationString",
+                        "Created",
+                        "Value",
+                        "CalculationTypeId"});
+            table2.AddRow(new string[] {
+                        "1",
+                        "3plus5",
+                        "9-8-2018 13:38:56",
+                        "8",
+                        "3"});
+            table2.AddRow(new string[] {
+                        "2",
+                        "3plus5keer10",
+                        "9-8-2018 14:05:04",
+                        "103",
+                        "5"});
 #line 11
- testRunner.Then("the result should be 120 on the screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I retrieve the following calculations", ((string)(null)), table2, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -101,12 +142,12 @@ this.ScenarioSetup(scenarioInfo);
             
             public FixtureData()
             {
-                CalculatorFeature.FeatureSetup();
+                CalculatorApiFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                CalculatorFeature.FeatureTearDown();
+                CalculatorApiFeature.FeatureTearDown();
             }
         }
     }

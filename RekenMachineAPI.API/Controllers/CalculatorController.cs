@@ -23,7 +23,7 @@ namespace RekenMachineAPI.API.Controllers
         public async Task<IHttpActionResult> GetAll(string sort = null)
         {
             return Ok(await _calculationService.GetEf()
-                .Include(x => x.CalculationType)
+//                .Include(x => x.CalculationType)
                 .ToListAsync());
         }
 

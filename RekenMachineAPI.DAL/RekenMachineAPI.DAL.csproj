@@ -74,6 +74,10 @@
     <Compile Include="Migrations\201807161132389_AddCalculationTable.Designer.cs">
       <DependentUpon>201807161132389_AddCalculationTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808101147513_RemovePeoplesTable.cs" />
+    <Compile Include="Migrations\201808101147513_RemovePeoplesTable.Designer.cs">
+      <DependentUpon>201808101147513_RemovePeoplesTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807161132389_AddCalculationTable.resx">
       <DependentUpon>201807161132389_AddCalculationTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808101147513_RemovePeoplesTable.resx">
+      <DependentUpon>201808101147513_RemovePeoplesTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

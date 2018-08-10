@@ -1,11 +1,14 @@
-﻿Feature: Calculator
-	In order to avoid silly mistakes
-	As a math idiot
-	I want to be told the sum of two numbers
+﻿Feature: Calculator api
 
-@mytag
-Scenario: Add two numbers
-	Given I have entered 50 into the calculator
-	And I have entered 70 into the calculator
-	When I press add
-	Then the result should be 120 on the screen
+Background: 
+	Given I seed the following calculations
+	| Id | CalculationString | Created           | Value | CalculationTypeId |
+	| 1  | 3plus5            | 9-8-2018 13:38:56 | 8     | 3                 |
+	| 2  | 3plus5keer10      | 9-8-2018 14:05:04 | 103   | 5                 |
+
+Scenario: Get calculations
+	When I get all calculations
+	Then I retrieve the following calculations
+	| Id | CalculationString | Created           | Value | CalculationTypeId |
+	| 1  | 3plus5            | 9-8-2018 13:38:56 | 8     | 3                 |
+	| 2  | 3plus5keer10      | 9-8-2018 14:05:04 | 103   | 5                 |	
